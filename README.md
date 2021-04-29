@@ -1,4 +1,4 @@
-# New Project
+# Expense Tracker UI
 
 > ✨ Bootstrapped with Create Snowpack App (CSA).
 
@@ -19,9 +19,19 @@ Your app is ready to be deployed!
 
 **For the best production performance:** Add a build bundler plugin like [@snowpack/plugin-webpack](https://github.com/snowpackjs/snowpack/tree/main/plugins/plugin-webpack) or [snowpack-plugin-rollup-bundle](https://github.com/ParamagicDev/snowpack-plugin-rollup-bundle) to your `snowpack.config.json` config file.
 
-### Q: What about Eject?
-
-No eject needed! Snowpack guarantees zero lock-in, and CSA strives for the same.
-
 
 # [Template](https://material-ui.com/getting-started/templates/dashboard/)
+
+# Discovery
+
+## What will this product do?
+
+It is an application for managing expenses between two parties or for calculating the budget of a person.
+This is mostly helpful between couples, between I and Dana mainly
+
+## Main features
+
+* Form to add expenses and calculate them
+* Form to calculate the budget for an individual
+* Login interface via Google
+* Settings - minimal, username, password, photo
