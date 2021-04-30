@@ -35,3 +35,20 @@ This is mostly helpful between couples, between I and Dana mainly
 * Form to calculate the budget for an individual
 * Login interface via Google
 * Settings - minimal, username, password, photo
+
+## User flows
+
+1. If the user isn't logged in he should be redirected to a simple login page where he at first can user the following login methods:
+    * google login
+    * user and password using the passport.js library on backend 
+2. After this step he would need to be redirected to a dashboard page where he/she can vizualize his current budget and last 5 expenses(in a table)
+3. The sidebar should contain the following links:
+    * dashboard 
+    * calculate current budget based on the last expense
+    * budget manager
+    * transactions between 2 parties
+4. If he wants he can vizualize his budget and a history across the year - I can use here a chart library
+5. !!! The most important feature is the form which will calculate the budget
+    -  the user would need to select the party who made the expenses
+    -  the form will have the following fields: 
+        * 
