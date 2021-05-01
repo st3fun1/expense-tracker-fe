@@ -5,11 +5,15 @@ import {
   Route
 } from "react-router-dom";
 import { Provider } from 'react-redux';
+import {
+  ThemeProvider as MuiThemeProvider,
+  StylesProvider
+} from '@material-ui/core/styles';
 import { ThemeProvider } from 'styled-components';
 import DashboardContainer from './modules/dashboard/DashboardContainer';
 import BudgetViewerContainer from './modules/budget-viewer/BudgetViewerContainer';
 import store from './store';
-import theme from './theme';
+import customTheme from './theme';
 
 
 const routes = [
@@ -30,13 +34,17 @@ function App() {
     <div className="App">
       <Router>
         <Provider store={store}>
-          <ThemeProvider theme={theme}>
+          <StylesProvider>
+            <MuiThemeProvider theme={customTheme}>
+              <ThemeProvider theme={customTheme}>
                   <Switch>
                     {routes.map( (route, i) => {
                       return <Route {...route} key={i}/>;
                     })}
                   </Switch>
-          </ThemeProvider>
+              </ThemeProvider>
+            </MuiThemeProvider>
+          </StylesProvider>
         </Provider>
       </Router>
     </div>

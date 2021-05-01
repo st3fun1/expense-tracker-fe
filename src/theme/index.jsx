@@ -1,10 +1,13 @@
-const theme = {
-    spacing: {
+import {
+    createMuiTheme
+} from '@material-ui/core/styles';
 
+const customTheme = createMuiTheme({
+    palette: {
+        primary: {
+        main: '#6772e5',
+        },
     },
-    typography: {},
-    colors: {},
-    components: {}
-};
+});
 
-export default theme;
+export default customTheme;
