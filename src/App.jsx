@@ -1,21 +1,44 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+import { Provider } from 'react-redux';
+import { ThemeProvider } from 'styled-components';
+import DashboardContainer from './modules/dashboard/DashboardContainer';
+import BudgetViewerContainer from './modules/budget-viewer/BudgetViewerContainer';
+import store from './store';
+import theme from './theme';
+
+
+const routes = [
+ {
+   exact: true,
+   path: '/', 
+   component: DashboardContainer
+ },
+ {
+   path: '/budget',
+   component: BudgetViewerContainer,
+ }
+];
+
 
 function App() {
-  // Create the count state.
-  const [count, setCount] = useState(0);
-  // Update the count (+1 every second).
-  useEffect(() => {
-    const timer = setTimeout(() => setCount(count + 1), 1000);
-    return () => clearTimeout(timer);
-  }, [count, setCount]);
-  // Return the App component.
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Page has been open for <code>{count}</code> seconds.
-        </p>
-      </header>
+      <Router>
+        <Provider store={store}>
+          <ThemeProvider theme={theme}>
+                  <Switch>
+                    {routes.map( (route, i) => {
+                      return <Route {...route} key={i}/>;
+                    })}
+                  </Switch>
+          </ThemeProvider>
+        </Provider>
+      </Router>
     </div>
   );
 }
