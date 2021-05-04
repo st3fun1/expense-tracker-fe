@@ -1,12 +1,8 @@
 import { combineReducers} from 'redux';
-
-const userReducer = (state = 0, action) => state
-
-const expensesReducer = (state = 1, action) => state
+import layoutReducer from 'modules/layout/reducers';
 
 const rootReducer = combineReducers({
-    user: userReducer,
-    expenses: expensesReducer
+    layout: layoutReducer
 });
 
 export default rootReducer;

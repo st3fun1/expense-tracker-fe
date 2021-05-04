@@ -10,6 +10,7 @@ import {
   StylesProvider
 } from '@material-ui/core/styles';
 import { ThemeProvider } from 'styled-components';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import DashboardContainer from './modules/dashboard/DashboardContainer';
 import BudgetViewerContainer from './modules/budget-viewer/BudgetViewerContainer';
 import store from './store';
@@ -31,7 +32,8 @@ const routes = [
 
 function App() {
   return (
-    <div className="App">
+    <React.Fragment>
+      <CssBaseline />
       <Router>
         <Provider store={store}>
           <StylesProvider>
@@ -47,7 +49,7 @@ function App() {
           </StylesProvider>
         </Provider>
       </Router>
-    </div>
+    </React.Fragment>
   );
 }
 
