@@ -1,8 +1,8 @@
-import { combineReducers} from 'redux';
-import layoutReducer from 'modules/layout/reducers';
+import { combineReducers } from "redux";
+import layoutReducer from "../modules/layout/reducers";
 
 const rootReducer = combineReducers({
-    layout: layoutReducer
+  layout: layoutReducer,
 });
 
 export default rootReducer;

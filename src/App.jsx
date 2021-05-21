@@ -1,54 +1,41 @@
-import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
-import { Provider } from 'react-redux';
+import React, { Suspense } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Provider } from "react-redux";
 import {
   ThemeProvider as MuiThemeProvider,
-  StylesProvider
-} from '@material-ui/core/styles';
-import { ThemeProvider } from 'styled-components';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import DashboardContainer from './modules/dashboard/DashboardContainer';
-import BudgetViewerContainer from './modules/budget-viewer/BudgetViewerContainer';
-import store from './store';
-import customTheme from './theme';
-
-
-const routes = [
- {
-   exact: true,
-   path: '/', 
-   component: DashboardContainer
- },
- {
-   path: '/budget',
-   component: BudgetViewerContainer,
- }
-];
-
+  StylesProvider,
+} from "@material-ui/core/styles";
+import { ThemeProvider } from "styled-components";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import store from "./store";
+import customTheme from "./theme";
+import Layout from "./modules/layout/Layout";
+import routes from "./routes";
 
 function App() {
   return (
     <React.Fragment>
       <CssBaseline />
-      <Router>
-        <Provider store={store}>
-          <StylesProvider>
-            <MuiThemeProvider theme={customTheme}>
-              <ThemeProvider theme={customTheme}>
-                  <Switch>
-                    {routes.map( (route, i) => {
-                      return <Route {...route} key={i}/>;
-                    })}
-                  </Switch>
-              </ThemeProvider>
-            </MuiThemeProvider>
-          </StylesProvider>
-        </Provider>
-      </Router>
+
+      <Provider store={store}>
+        <StylesProvider>
+          <MuiThemeProvider theme={customTheme}>
+            <ThemeProvider theme={customTheme}>
+              <Router>
+                <Layout>
+                  <Suspense fallback={<div>Loading...</div>}>
+                    <Switch>
+                      {routes.map((route, i) => {
+                        return <Route {...route} key={i} />;
+                      })}
+                    </Switch>
+                  </Suspense>
+                </Layout>
+              </Router>
+            </ThemeProvider>
+          </MuiThemeProvider>
+        </StylesProvider>
+      </Provider>
     </React.Fragment>
   );
 }
