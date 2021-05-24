@@ -18,6 +18,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import { mainListItems, secondaryListItems } from "./links";
+import { useLocation } from "react-router-dom";
 
 function Copyright() {
   return (
@@ -125,8 +126,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const WITHOUT_LAYOUT_ROUTES = ["/login"];
+
 const Layout = ({ children }) => {
   const classes = useStyles();
+  const location = useLocation();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -135,6 +139,9 @@ const Layout = ({ children }) => {
     setOpen(false);
   };
 
+  if (WITHOUT_LAYOUT_ROUTES.includes(location.pathname)) {
+    return <>{children}</>;
+  }
   return (
     <div className={classes.root}>
       <CssBaseline />

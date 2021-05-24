@@ -1,5 +1,4 @@
 import React from "react";
-const Test = () => <div>test</div>;
 
 const routes = [
   {
@@ -15,6 +14,11 @@ const routes = [
     component: React.lazy(() =>
       import("./modules/budget-viewer/BudgetViewerContainer")
     ),
+  },
+  {
+    path: "/login",
+    exact: true,
+    component: React.lazy(() => import("./modules/login/Login")),
   },
 ];
 
